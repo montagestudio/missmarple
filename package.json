@@ -1,0 +1,16 @@
+{
+    "name": "missmarple",
+    "version": "0.1.0-alpha",
+    "dependencies": {
+        "montage": "0.13.0-alpha"
+    },
+    "devDependencies": {
+        "montage-testing": "0.2.0-alpha"
+    },
+    "exclude": [
+        "run-tests.html",
+        "test"
+    ],
+    "bundle": ["ui/main.reel"],
+    "shard": 4
+}

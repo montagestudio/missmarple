@@ -1,0 +1,7 @@
+{
+    "name": "missmarple",
+    "version": "0.1",
+    "minimum_chrome_version": "25.0",
+    "devtools_page": "inspector.html",
+    "manifest_version": 2
+}
