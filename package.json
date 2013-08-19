@@ -2,15 +2,13 @@
     "name": "missmarple",
     "version": "0.1.0-alpha",
     "dependencies": {
-        "montage": "0.13.0-alpha"
+        "montage": "0.13.4"
     },
     "devDependencies": {
-        "montage-testing": "0.2.0-alpha"
+        "montage-testing": "0.2.0"
     },
     "exclude": [
         "run-tests.html",
         "test"
-    ],
-    "bundle": ["ui/main.reel"],
-    "shard": 4
+    ]
 }
