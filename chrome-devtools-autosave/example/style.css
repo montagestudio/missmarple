@@ -1,0 +1,19 @@
+body {
+    background: #eaeef3;
+    font: 13px Helvetica, sans-serif;
+    width: 300px;
+    margin: 2em auto 0;
+}
+
+h1 {
+    background: #000;
+    padding: .6em 1em;
+    font-size: 200%;
+    line-height: 1.5em;
+    color: #FFF;
+
+    -webkit-border-radius: 24px; /* Old WebKit */
+    -moz-border-radius: 24px; /* Old Firefox  */
+    -o-border-radius: 24px; /* Old Opera */
+    border-radius: 24px; /* latest WebKit, Firefox and Opera */
+}

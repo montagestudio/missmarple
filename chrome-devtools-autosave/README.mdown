@@ -1,0 +1,59 @@
+# Chrome DevTools Autosave
+
+**[DevTools Autosave on Google I/O 2012](http://www.youtube.com/watch?v=3pxf3Ju2row&hd=1&t=18m24s)** · **[Intro to DevTools Autosave version 0.x (a bit outdated)](http://addyosmani.com/blog/autosave-changes-chrome-dev-tools/)**
+
+Chrome DevTools let you edit CSS and JavaScript. It even allows you to save it. I think, it’s annoying to choose a folder you want to save to for every file. DevTools Autosave saves the files on every change for you!
+
+## How to Install
+
+Chrome DevTools Autosave consists of a Chrome extension and a server. The extension pushes changed files to the server. The server resolves URL of these files and overwrites the old ones with the new ones.
+
+### Install [the Extension](https://chrome.google.com/webstore/detail/mlejngncgiocofkcbnnpaieapabmanfl)
+
+### Install [the Server](https://github.com/NV/chrome-devtools-autosave-server/blob/master/README.mdown)
+
+## How to Use
+
+    $ autosave
+    DevTools Autosave is listening on http://127.0.0.1:9104
+
+Open example/index.html locally (using file:// scheme).  
+Edit some CSS and JS.  
+That’s it. Files have been saved.
+
+## How Does It Work?
+
+Google Chrome has an [onResourceContentCommitted event](http://developer.chrome.com/extensions/devtools.inspectedWindow.html#event-onResourceContentCommitted) that fires when you edit CSS and JavaScript.
+
+    chrome.experimental.devtools.inspectedWindow.onResourceContentCommitted.addListener(function(resource, content) {
+        resource.url
+        resource.type // 'script', 'stylesheet' or 'document' (happens when you edit inline JS or CSS)
+        content // all the content of updated file as a string
+    })
+
+Nice, isn’t it?
+
+More on [Autosave protocol](https://github.com/NV/chrome-devtools-autosave/wiki/Protocol).
+
+### FAQ
+
+> I’m developing on `http://localhost/` (or `http://you-name-it/`) instead of `file://`. Can I make Autosave work?
+
+Sure, just add a new route to the extension’s options.
+
+![Autosave Options](https://lh6.googleusercontent.com/DA5oo80MQuRWLSim_0WmJfoMf060ZtkC1ITt4-cnesq3lMKO00bdL6yG1xUN548f82WeRn8WHw=s640-h400-e365)
+
+## Alternatives
+
+All the alternative listed below miss one Autosave’s feature: saving newly added CSS rules to the last stylesheet file.
+
+### Workspaces
+
+![chrome-devtools-workspaces](https://f.cloud.github.com/assets/55838/727738/6e76debc-e1b9-11e2-8ae9-716b21090a7c.png)
+
+Latest Chrome DevTools support [Workspaces](https://plus.google.com/+GoogleChromeDevelopers/posts/644qQuBKZeL) which makes Chrome DevTools Autosave obsolete.
+
+### [Tincr](http://tin.cr/)
+The same as Autosave but doesn’t require you to install the server and does both ways syncing!
+
+### [JetBrains IDE Chrome extension](https://chrome.google.com/webstore/detail/jetbrains-ide-support/hmhgeddbohgjknpmjagkdomcpobmllji)
