@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="component-item.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "prototype": "ui/component-item.reel",
+            "properties": {
+                "element": {"#": "componentItem"}
+            }
+        },
+        "actionEventListener": {
+            "prototype": "montage/core/event/action-event-listener",
+            "properties": {
+                "action": "toggleDisclosure",
+                "handler": {"@": "owner"}
+            }
+        },
+        "discloseComposer": {
+            "prototype": "montage/composer/press-composer",
+            "properties": {
+                "component": {"@": "owner"},
+                "element": {"#": "disclose"}
+            },
+            "listeners": [
+                {
+                    "type": "press",
+                    "useCapture": false,
+                    "listener": {"@": "actionEventListener"}
+                }
+            ]
+        },
+        "text1": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "text"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.node.content.displayName"}
+            }
+        },
+        "text2": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "disclose"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.stateText"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="componentItem" class="ComponentItem">
+        <span data-montage-id="disclose" class="ComponentItem-disclose"></span>
+        <span data-montage-id="text"></span>
+    </div>
+</body>
+</html>

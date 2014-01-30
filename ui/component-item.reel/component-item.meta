@@ -1,0 +1,52 @@
+{
+  "blueprint_component_reference": {
+    "prototype": "montage/core/meta/blueprint-reference",
+    "properties": {
+      "valueReference": {
+        "blueprintName": "Component",
+        "blueprintModule": {
+          "%": "montage/ui/component.meta"
+        }
+      }
+    }
+  },
+  "blueprint_unnamed_node": {
+    "prototype": "montage/core/meta/property-blueprint",
+    "properties": {
+      "name": "node",
+      "blueprint": {"@": "root"},
+      "valueType": "object"
+    }
+  },
+  "blueprint_unnamed_stateText": {
+    "prototype": "montage/core/meta/property-blueprint",
+    "properties": {
+      "name": "stateText",
+      "blueprint": {"@": "root"}
+    }
+  },
+  "root": {
+    "prototype": "montage/core/meta/module-blueprint",
+    "properties": {
+      "name": null,
+      "blueprintModule": {
+        "%": "ui/component-item.reel/component-item.meta"
+      },
+      "parent": {"@": "blueprint_component_reference"},
+      "propertyBlueprints": [
+        {"@": "blueprint_unnamed_node"},
+        {"@": "blueprint_unnamed_stateText"}
+      ],
+      "propertyBlueprintGroups": {
+        "ComponentItem": [
+          {"@": "blueprint_unnamed_node"},
+          {"@": "blueprint_unnamed_stateText"}
+        ]
+      },
+      "module": {
+        "%": "ui/component-item.reel"
+      },
+      "exportName": "ComponentItem"
+    }
+  }
+}

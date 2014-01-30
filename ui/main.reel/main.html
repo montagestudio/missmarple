@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Main</title>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        Main
+    </title>
     <link rel="stylesheet" type="text/css" href="main.css">
-
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
-                }
+    {
+        "owner": {
+            "prototype": "../main.reel",
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "componentPanel": {
+            "prototype": "../component-panel.reel",
+            "properties": {
+                "element": {"#": "componentPanel"}
+            }
+        },
+        "panels": {
+            "prototype": "../tabbed-pane.reel",
+            "properties": {
+                "element": {"#": "panels"}
+            }
+        },
+        "horizontalSplit": {
+            "prototype": "../split-view.reel",
+            "properties": {
+                "element": {"#": "horizontalSplit"},
+                "splitAxis": "horizontal",
+                "valuePercentage": 25
+            }
+        },
+        "verticalSplit": {
+            "prototype": "../split-view.reel",
+            "properties": {
+                "element": {"#": "verticalSplit"},
+                "splitAxis": "vertical",
+                "valuePercentage": 33
             }
         }
+    }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" class="Main">Hello World</div>
+    <div data-montage-id="main" class="Main">
+        <div data-montage-id="horizontalSplit">
+            <div data-arg="first" data-montage-id="verticalSplit">
+                <div data-arg="first" data-montage-id="panels">
+                    <div data-arg="component" data-montage-id="componentPanel"></div>
+                </div>
+                <div data-arg="second">
+                    Second
+                </div>
+            </div>
+            <div data-arg="second">
+                Bottom
+            </div>
+        </div>
+    </div>
 </body>
 </html>

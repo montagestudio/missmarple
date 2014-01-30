@@ -2,7 +2,8 @@
     "name": "missmarple",
     "version": "0.1.0-alpha",
     "dependencies": {
-        "montage": "0.13.4"
+        "montage": "0.13.4",
+        "digit": "~0.4.0",
     },
     "devDependencies": {
         "montage-testing": "0.2.0"

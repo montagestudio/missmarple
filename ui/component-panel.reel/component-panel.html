@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="component-panel.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "prototype": "ui/component-panel.reel",
+            "properties": {
+                "element": {"#": "componentPanel"},
+                "treeController": {"@": "treeController"}
+            }
+        },
+        "componentItem1": {
+            "prototype": "ui/component-item.reel",
+            "properties": {
+                "element": {"#": "componentItem"}
+            },
+            "bindings": {
+                "node": {"<-": "@repetition:iteration.object"}
+            }
+        },
+        "rangeController": {
+            "prototype": "montage/core/range-controller",
+            "bindings": {
+                "content": {"<-": "@treeController.iterations"}
+            }
+        },
+        "repetition": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "repetition"},
+                "contentController": {"@": "rangeController"}
+            }
+        },
+        "treeController": {
+            "prototype": "montage/core/tree-controller",
+            "properties": {
+                "childrenPath": "childComponents"
+            },
+            "bindings": {
+                "content": {"<-": "@owner.root"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="componentPanel" class="ComponentPanel">
+        <div data-montage-id="repetition">
+            <div data-montage-id="componentItem"></div>
+        </div>
+    </div>
+</body>
+</html>

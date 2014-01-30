@@ -3,7 +3,7 @@ if (chrome.devtools) {
     var Inspector = {};
 
     Inspector.log = function(message) {
-        chrome.devtools.inspectedWindow.eval("console.log('[missmarple page] " + message + "');");
+//        chrome.devtools.inspectedWindow.eval("console.log('[missmarple page] " + message + "');");
     };
 
     Inspector.debug = function(message) {
@@ -15,7 +15,7 @@ if (chrome.devtools) {
     Inspector.debug("LOADED " + (new Date()));
 
     Inspector.run = function(funktion, callback) {
-        chrome.devtools.inspectedWindow.eval("("+funktion.toString()+")()", callback);
+//        chrome.devtools.inspectedWindow.eval("("+funktion.toString()+")()", callback);
     };
 
     console.error = Inspector.log
