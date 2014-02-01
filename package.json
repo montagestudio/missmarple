@@ -4,6 +4,8 @@
     "dependencies": {
         "montage": "0.13.4",
         "digit": "~0.4.0",
+        "montage-tabs": "~0.1.0",
+        "montage-splitter": "~0.1.0",
         "diff_match_patch": "0.1.1"
     },
     "devDependencies": {
