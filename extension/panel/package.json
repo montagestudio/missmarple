@@ -1,0 +1,18 @@
+{
+	"name": "missmarple",
+	"version": "0.1.0",
+	"dependencies": {
+		"montage": "0.13.5",
+		"q-connection": "0.5.5"
+	},
+	"devDependencies": {
+		"montage-testing": "0.2.0"
+	},
+	"exclude": [
+		"run-tests.html",
+		"test"
+	],
+	"optionalDependencies": {},
+	"bundledDependencies": [],
+	"maintainers": []
+}
