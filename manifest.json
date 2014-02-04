@@ -5,11 +5,17 @@
     "background": {
         "page": "background/background.html"
     },
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "js": ["content-script/content.js"]
+        }
+    ],
     "permissions": [
         "notifications",
         "http://*/"
     ],
-
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "manifest_version": 2,
     "minimum_chrome_version": "32.0"
 }

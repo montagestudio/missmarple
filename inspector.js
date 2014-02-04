@@ -29,7 +29,7 @@ if(!chrome.devtools) {
     chrome.devtools.panels.create(
         "Montage",
         "assets/images/montage-logo-gradients.svg",
-        "builds/missmarple/index.html",
+        "index.html",
         function (panel) {
             Inspector.debug("LOADED panel: " + panel);
         }

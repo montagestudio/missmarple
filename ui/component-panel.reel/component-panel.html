@@ -12,6 +12,31 @@
                 "treeController": {"@": "treeController"}
             }
         },
+        "actionEventListener": {
+            "prototype": "montage/core/event/action-event-listener",
+            "properties": {
+                "action": "refresh",
+                "handler": {"@": "owner"}
+            },
+            "_dev": {
+                "isHidden": true
+            }
+        },
+        "button1": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "button"},
+                "enabled": true,
+                "label": "Refresh"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "actionEventListener"}
+                }
+            ]
+        },
         "componentItem1": {
             "prototype": "ui/component-item.reel",
             "properties": {
@@ -51,6 +76,7 @@
         <div data-montage-id="repetition">
             <div data-montage-id="componentItem"></div>
         </div>
+        <button data-montage-id="button" class="ComponentPanel-button"></button>
     </div>
 </body>
 </html>

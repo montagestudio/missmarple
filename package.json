@@ -6,7 +6,10 @@
         "digit": "~0.4.0",
         "montage-tabs": "~0.1.0",
         "montage-splitter": "~0.1.0",
-        "diff_match_patch": "0.1.1"
+        "diff_match_patch": "0.1.1",
+        "mr": "0.15.1",
+        "q": "1.0.0",
+        "q-connection": "0.5.6"
     },
     "devDependencies": {
         "montage-testing": "0.2.0"

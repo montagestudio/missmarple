@@ -1,20 +1,22 @@
 'use strict';
 
+var Promise = require("montage/core/promise").Promise;
+
 var diffMatchPatch;
 /**
  * @param {Function} onload
  */
-function loadDiffMatchPatch(onload) {
-    console.info('Loading diff_match_patch.js');
-    var script = document.createElement('script');
-    script.src = 'diff_match_patch.js';
-    script.onload = function() {
-        diffMatchPatch = new diff_match_patch();
-        diffMatchPatch.Patch_Margin = 16;
-        console.info('diff_match_patch.js loaded');
-        onload();
-    };
-    document.head.appendChild(script);
+function loadDiffMatchPatch() {
+    if( diffMatchPatch ) {
+        return Promise.resolve(diffMatchPatch)
+    } else {
+        return require.async("diff_match_patch").get("diff_match_patch").then(function (diff_match_patch) {
+            console.info('Loading diff_match_patch.js');
+            diffMatchPatch = new diff_match_patch();
+            diffMatchPatch.Patch_Margin = 16;
+            return diffMatchPatch;
+        })
+    }
 }
 
 
@@ -72,13 +74,8 @@ chrome.devtools.inspectedWindow.onResourceContentCommitted.addListener(function(
                 return;
             }
 
-            if (diffMatchPatch) {
-                sendToBackgroundPage();
-            } else {
-                loadDiffMatchPatch(sendToBackgroundPage);
-            }
-
-            function sendToBackgroundPage() {
+            loadDiffMatchPatch().then( function sendToBackgroundPage(diffMatchPatch) {
+                console.info('sendToBackgroundPage');
                 var patch;
                 if (isNewlyAdded(event)) {
                     console.info('New CSS rules added. Appending them to', lastStylesheetURL);
@@ -99,6 +96,8 @@ chrome.devtools.inspectedWindow.onResourceContentCommitted.addListener(function(
                     return;
                 }
 
+
+                console.info('sendToBackgroundPage sending:', patch);
                 chrome.extension.sendRequest({
                     method: 'send',
                     content: JSON.stringify(patch),
@@ -110,7 +109,8 @@ chrome.devtools.inspectedWindow.onResourceContentCommitted.addListener(function(
                         'X-Type': event.type
                     }
                 });
-            }
+            }).done();
+
         });
     }
 });

@@ -18,19 +18,39 @@ exports.ComponentPanel = Component.specialize(/** @lends ComponentPanel# */ {
 
     enterDocument: {
         value: function () {
-            var self = this;
-            rootComponent().then(function (rootComponent) {
-                self.root = rootComponent;
-            }).done();
+//            this.refresh();
         }
     },
-    
+
     tabTitleforKey: {
         value: function() {
             return "Components"
         }
     },
-    
+
+    refresh: {
+        value: function() {
+
+            rootComponent().then(function (component) {
+                component.addRangeAtPathChangeListener.fcall(null,"childComponents", function (plus, minus, index) {
+                    debugger
+                }).done();
+                return Q.thenResolve(component);
+            })
+            .then(function (component) {
+                component.invoke("load");
+            }).done()
+
+
+//            var self = this;
+//            rootComponent.then(function (rootComponent) {
+//                return rootComponent.get("componentTree");
+//            }).then(function (componentTree) {
+//                self.root = componentTree;
+//            }).done();
+        }
+    },
+
 
     root: {
         value: null
