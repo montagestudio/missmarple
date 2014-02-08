@@ -5,6 +5,8 @@ var Q = require("q");
 var pageConnection = Q.defer();
 var devtoolProxy = {};
 
+var connected = false;
+
 if(chrome.runtime) {
     //Connect to the background
     var backgroundPort = chrome.runtime.connect({name: "background-devtools"});
@@ -14,10 +16,14 @@ if(chrome.runtime) {
         if(message.action === "background-ready") {
             backgroundPort.postMessage({"action": "inspect-montage"});
             console.log("background <=> devtools - Connected");
-            pageConnection.resolve(Connection(backgroundPort, devtoolProxy));
+            // when the page reloads
+            if(!connected) {
+                pageConnection.resolve(Connection(backgroundPort, devtoolProxy));
+                connected = true;
+            }
         }
     };
-    //keep listenting so that 
+    //keep listenting so that
     backgroundPort.onMessage.addListener(messageListener);
 }
 
