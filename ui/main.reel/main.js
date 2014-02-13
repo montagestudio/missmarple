@@ -16,22 +16,8 @@ if(chrome.devtools) {
 */
 exports.Main = Montage.create(Component, /** @lends module:"ui/main.reel".Main# */ {
 
-    inspectedPageRefresh: {
-        value: function() {
-            var port = chrome.extension.connect();
-            port.postMessage({
-                action: 'register',
-                inspectedTabId: chrome.devtools.inspectedWindow.tabId
-            });
-            port.onMessage.addListener(function(msg) {
-                if (msg === 'refresh') {
-                    cb();
-                }
-            });
-            port.onDisconnect.addListener(function (a) {
-                console.log(a);
-            });
-        }
+    inspectedObject: {
+        value: null
     }
 });
 

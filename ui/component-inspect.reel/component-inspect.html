@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="component-inspect.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"}
+            }
+        },
+        "needsDraw": {
+            "prototype": "../string-promise.reel",
+            "properties": {
+                "element": {"#": "needsDraw"},
+                 "property": "needsDraw"
+            },
+            "bindings": {
+                "promise": {"<-": "@owner.component._remote"}
+            }
+        },
+        "title": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "title"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner.component.displayName"}
+            }
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="owner" class="ComponentInspect">
+        <h3 data-montage-id="title"></h3>
+        needsDraw: <span data-montage-id="needsDraw"></span>
+    </div>
+</body>
+</html>

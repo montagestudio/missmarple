@@ -13,7 +13,8 @@ exports.ComponentItem = Component.specialize(/** @lends ComponentItem# */ {
         value: function ComponentItem() {
             this.super();
 //            this.defineBinding( "depth", { "<-": "node.depth" });
-            this.addPathChangeListener("node.expanded", this, "handleExpansion")
+            this.addPathChangeListener("node.expanded", this, "handleStateChange");
+            this.addRangeAtPathChangeListener("node.children", this, "handleStateChange");
         }
     },
 
@@ -31,7 +32,7 @@ exports.ComponentItem = Component.specialize(/** @lends ComponentItem# */ {
         }
     },
 
-    handleExpansion: {
+    handleStateChange: {
         value: function() {
             if(this.node) {
                 if (this.node.children.length === 0) {

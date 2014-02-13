@@ -1,5 +1,5 @@
-.ComponentItem {
-
+.ComponentItem.selected {
+    background-color: lightblue;
 }
 
 .ComponentItem-disclose {

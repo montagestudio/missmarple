@@ -8,36 +8,14 @@
         "owner": {
             "prototype": "ui/component-panel.reel",
             "properties": {
-                "element": {"#": "componentPanel"},
+                "element": {"#": "owner"},
                 "treeController": {"@": "treeController"}
+            },
+            "bindings": {
+                "selectedComponent": {"<->": "@rangeController.selection.one().content"}
             }
         },
-        "actionEventListener": {
-            "prototype": "montage/core/event/action-event-listener",
-            "properties": {
-                "action": "refresh",
-                "handler": {"@": "owner"}
-            },
-            "_dev": {
-                "isHidden": true
-            }
-        },
-        "button1": {
-            "prototype": "digit/ui/button.reel",
-            "properties": {
-                "element": {"#": "button"},
-                "enabled": true,
-                "label": "Refresh"
-            },
-            "listeners": [
-                {
-                    "type": "action",
-                    "useCapture": false,
-                    "listener": {"@": "actionEventListener"}
-                }
-            ]
-        },
-        "componentItem1": {
+        "componentItem": {
             "prototype": "ui/component-item.reel",
             "properties": {
                 "element": {"#": "componentItem"}
@@ -48,6 +26,9 @@
         },
         "rangeController": {
             "prototype": "montage/core/range-controller",
+            "properties": {
+                "selection": []
+            },
             "bindings": {
                 "content": {"<-": "@treeController.iterations"}
             }
@@ -56,6 +37,7 @@
             "prototype": "montage/ui/repetition.reel",
             "properties": {
                 "element": {"#": "repetition"},
+                "isSelectionEnabled": true,
                 "contentController": {"@": "rangeController"}
             }
         },
@@ -72,11 +54,10 @@
     </script>
 </head>
 <body>
-    <div data-montage-id="componentPanel" class="ComponentPanel">
+    <div data-montage-id="owner" class="ComponentPanel">
         <div data-montage-id="repetition">
             <div data-montage-id="componentItem"></div>
         </div>
-        <button data-montage-id="button" class="ComponentPanel-button"></button>
     </div>
 </body>
 </html>

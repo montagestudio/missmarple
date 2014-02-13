@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="string-promise.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"}
+            }
+        },
+        "text": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "text"}
+            },
+            "bindings": {
+                "value": {"<-": "@owner._value"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <span data-montage-id="owner" class="StringPromise">
+        <span data-montage-id="text" class="StringPromise"></span>
+    </span>
+</body>
+</html>

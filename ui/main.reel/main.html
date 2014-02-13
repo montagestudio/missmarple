@@ -12,6 +12,24 @@
             "prototype": "../main.reel",
             "properties": {
                 "element": {"#": "main"}
+            },
+            "bindings": {
+                "inspectedObject": {"<-": "@componentPanel.selectedComponent"}
+            }
+        },
+        "componentInspect": {
+            "prototype": "../component-inspect.reel",
+            "properties": {
+                "element": {"#": "componentInspect"}
+            },
+            "bindings": {
+                "component": {"<-": "@owner.inspectedObject"}
+            }
+        },
+        "panels": {
+            "prototype": "montage-tabs/ui/tabs.reel",
+            "properties": {
+                "element": {"#": "panels"}
             }
         },
         "componentPanel": {
@@ -20,10 +38,16 @@
                 "element": {"#": "componentPanel"}
             }
         },
-        "panels": {
+        "inspectors": {
             "prototype": "montage-tabs/ui/tabs.reel",
             "properties": {
-                "element": {"#": "panels"}
+                "element": {"#": "inspectors"}
+            }
+        },
+        "settings": {
+            "prototype": "montage-tabs/ui/tabs.reel",
+            "properties": {
+                "element": {"#": "settings"}
             }
         },
         "horizontalSplit": {
@@ -52,12 +76,14 @@
                 <div data-arg="first" data-montage-id="panels">
                     <div data-arg="component" data-montage-id="componentPanel"></div>
                 </div>
-                <div data-arg="second">
-                    Second
+                <div data-arg="second" data-montage-id="inspectors">
+                    <div data-arg="component" data-montage-id="componentInspect"></div>
                 </div>
             </div>
-            <div data-arg="second">
-                Bottom
+            <div data-arg="second" data-montage-id="settings">
+                <div data-arg="logger" data-montage-id=""></div>
+                <div data-arg="autosave" data-montage-id=""></div>
+                <div data-arg="debug" data-montage-id=""></div>
             </div>
         </div>
     </div>
